@@ -11,8 +11,15 @@
       <div class="app">
         <aside class="sidebar-side" id="sidebar">
           <div class="sidebar-header">
-            <div class="logo-block">
-              <img src="" alt="logo" />
+            <div
+              class="logo-block"
+              style="display: flex; justify-content: center"
+            >
+              <img
+                src="assets/image/dashLogo.png"
+                style="width: 100%; height: 70%"
+                alt="logo"
+              />
             </div>
           </div>
           <div class="sidebar-side-item-block">
@@ -156,7 +163,6 @@
             </button>
           </div>
           <div class="desktop-main-content">
-           
             <div class="columns-zone">
               <div class="column">
                 <div class="column-header">
@@ -226,10 +232,22 @@
             <label for="task-deadline">Выполнить до</label>
             <input type="date" name="task-deadline" id="task-deadline" />
           </div>
-
+          <div class="form-group">
+            <label for="developer">Разработчик</label>
+            <select id="developer" class="form-control">
+              <option value="">Выберите разработчика</option>
+              <option value="ivan">Иван Иванов</option>
+              <option value="petr">Петр Петров</option>
+              <option value="anna">Анна Сидорова</option>
+            </select>
+          </div>
           <div class="form-actions">
-            <button type="button" id="cancelButtonModal" class="btn-cancel">Отмена</button>
-            <button type="submit" class="btn-submit">Создать задачу</button>
+            <button type="button" id="cancelButtonModal" class="btn-cancel">
+              Отмена
+            </button>
+            <button type="button" class="btn-submit" id="submitButton">
+              Создать задачу
+            </button>
           </div>
         </form>
       </div>
