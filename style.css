@@ -131,7 +131,7 @@
 .desktop-content {
   background-color: var(--main-color);
   width: 100%;
-  height: 100dvh; /* исправлена опечатка 100vdh */
+  height: 100dvh; 
   padding: var(--padding);
   display: flex;
   flex-direction: column;
