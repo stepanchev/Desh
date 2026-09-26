@@ -43,7 +43,7 @@
   display: flex;
   flex-direction: column;
   padding: var(--padding);
-  gap: 20px;
+  gap: 5px;
 }
 
 .sidebar-side-item-block {
@@ -56,6 +56,7 @@
   display: flex;
   align-content: center;
   gap: 20px;
+  justify-content: center;
 }
 
 .side-item {
@@ -477,9 +478,6 @@
   background-color: var(--button-bg);
 }
 
-/* ===== Кастомный select с аватарками пользователей ===== */
-
-/* Скрытый нативный select (хранит значение формы) */
 .native-select {
   position: absolute;
   width: 1px;
@@ -544,7 +542,6 @@
   transform: rotate(180deg);
 }
 
-/* Круглый блок с иконкой человека слева */
 .user-select-avatar {
   display: flex;
   align-items: center;
@@ -567,7 +564,6 @@
   color: #5e6c84;
 }
 
-/* Никнейм справа от иконки */
 .user-select-name {
   font-size: 14px;
   color: #172b4d;
