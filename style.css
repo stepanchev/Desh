@@ -8,7 +8,7 @@
   --text: #4f4f4f;
   --padding: 20px 10px;
   --text-size: 15px;
-  --column-bg: #f2f0f0;
+  --column-bg: #F5F5F5;
   --text-muted: #8d8d8d;
   --text-light: #a5a5a5;
   --input-bg: #fafafa;
@@ -212,7 +212,7 @@
 }
 
 .column {
-  width: 16dvw;
+  width: 17dvw;
   min-width: 250px;
   min-height: 80dvh;
   padding: 15px;
@@ -625,4 +625,41 @@
 
 .user-select-option.selected .user-select-name {
   font-weight: 600;
+}
+
+.card-task{
+  display: flex;
+  background-color:var(--main-color);
+  padding:10px 15px;
+  height: 100px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  flex-direction: column;
+  gap: 2px;
+}
+.task-card-header{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+.task-card-header > span {
+  opacity: 0;
+  transition: opacity 0.2s ease; 
+}
+.card-task:hover .task-card-header > span {
+  opacity: 1;
+cursor: pointer;
+
+}
+.card-name-block{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.task-name{
+  color:var(--text-light);
+}
+.task-description{
+  font-size: 14px;
 }
