@@ -8,8 +8,17 @@
   --text: #4f4f4f;
   --padding: 20px 10px;
   --text-size: 15px;
-  --column-bg: #ffffff;
-  --column-border: #ececec;
+  --column-bg: #F5F5F5;
+  --text-muted: #8d8d8d;
+  --text-light: #a5a5a5;
+  --input-bg: #fafafa;
+  --input-border: var(--border-color);
+  --input-border-hover: #c5c5c5;
+  --overlay-bg: rgba(26, 26, 26, 0.54);
+  --shadow-soft:
+    0 8px 24px rgba(26, 26, 26, 0.12), 0 0 1px rgba(26, 26, 26, 0.2);
+  --hover-bg: rgba(26, 26, 26, 0.06);
+  --hover-bg-strong: #cbc5c5;
 }
 
 * {
@@ -26,25 +35,30 @@
   justify-content: center;
   align-items: center;
 }
+
 .sidebar-side {
   height: 100dvh;
   width: 250px;
-  background-color: #1a1a1a00;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   padding: var(--padding);
-  gap: 20px;
+  gap: 5px;
 }
+
 .sidebar-side-item-block {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .sidebar-header {
   display: flex;
   align-content: center;
   gap: 20px;
+  justify-content: center;
 }
+
 .side-item {
   display: flex;
   padding: 10px 15px;
@@ -56,6 +70,7 @@
   transition: var(--transition-fast);
   width: 100%;
 }
+
 .side-item-inner {
   display: flex;
   gap: 10px;
@@ -63,14 +78,17 @@
   width: 100%;
   font-size: var(--text-size);
 }
+
 .side-item-inner > svg {
   width: 18px;
   flex-shrink: 0;
 }
+
 .task-count {
   margin-left: auto;
   opacity: 0;
 }
+
 .side-item:hover,
 .side-item:hover > .side-item-inner > .task-count {
   color: var(--main-color);
@@ -83,6 +101,7 @@
   display: flex;
   align-items: center;
 }
+
 .user-block {
   padding: 10px 15px;
   display: flex;
@@ -92,6 +111,7 @@
   gap: 10px;
   flex: 1;
 }
+
 .user-profil-icon {
   width: 35px;
   height: 35px;
@@ -103,24 +123,28 @@
   color: var(--main-color);
   flex-shrink: 0;
 }
+
 .user-name-sidebar {
   font-size: 18px;
 }
+
 .desktop-content {
   background-color: var(--main-color);
   width: 100%;
-  height: 100vdh;
+  height: 100dvh; 
   padding: var(--padding);
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
 .desktop-header {
   width: 100%;
   display: flex;
   justify-content: flex-end;
   gap: 2%;
 }
+
 .user-profil-icon.participants {
   width: 35px;
   height: 35px;
@@ -132,6 +156,7 @@
   color: var(--main-color);
   flex-shrink: 0;
 }
+
 .add-task {
   padding: 6px 15px;
   background-color: var(--button-bg);
@@ -145,10 +170,12 @@
   gap: 5px;
   cursor: pointer;
 }
+
 .add-task > span {
   font-size: 23px;
   font-weight: 200;
 }
+
 .execution-tables {
   display: none;
   flex: 1;
@@ -156,6 +183,7 @@
   padding: 5px;
   gap: 20px;
 }
+
 .execution-block {
   width: 21dvw;
   height: 90px;
@@ -166,45 +194,33 @@
   display: flex;
   flex-direction: column;
 }
+
 .execution-block > p {
-  color: #8d8d8d;
+  color: var(--text-muted);
   font-size: 13px;
 }
+
 .execution-block > span {
   font-size: 20px;
 }
-/* ===== Колонки (минималистичный современный стиль) ===== */
+
 .columns-zone {
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 4px 4px 16px;
+  gap: 16px;
+  padding: 16px;
   overflow-x: auto;
-  scrollbar-width: thin;
 }
 
 .column {
-  width: 20dvw;
-  min-width: 280px;
-  max-width: 340px;
-  min-height: 78dvh;
-  max-height: calc(100dvh - 140px);
-  padding: 16px;
-  background-color: #ffffff;
-  border: 1px solid #ececec;
-  border-radius: 16px;
-  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+  width: 17dvw;
+  min-width: 250px;
+  min-height: 80dvh;
+  padding: 15px;
+  background-color: var(--column-bg);
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  transition:
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.column:hover {
-  border-color: #e2e2e2;
-  box-shadow: 0 6px 20px rgba(17, 17, 17, 0.06);
+  gap: 12px;
 }
 
 .column-header {
@@ -212,20 +228,17 @@
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #f1f1f1;
 }
 
 .column-title-block {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
-  min-width: 0;
 }
 
 .column-color-dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   background-color: var(--button-bg);
   border-radius: 50%;
   flex-shrink: 0;
@@ -233,28 +246,9 @@
 
 .column-title {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.2px;
-  color: #1a1a1a;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.column-count {
-  flex-shrink: 0;
-  min-width: 22px;
-  height: 22px;
-  padding: 0 7px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 500;
-  color: #8d8d8d;
-  background-color: #f4f4f4;
-  border-radius: 999px;
+  color: var(--text);
 }
 
 .task-list {
@@ -262,92 +256,55 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   padding-right: 4px;
-  scrollbar-width: thin;
 }
 
 .task-list::-webkit-scrollbar {
-  width: 4px;
-}
-.task-list::-webkit-scrollbar-track {
-  background: transparent;
-}
-.task-list::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.12);
-  border-radius: 999px;
-}
-.task-list::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.22);
+  width: 6px;
 }
 
-/* ===== Кнопка добавления задачи в шапке колонки ===== */
+.task-list::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
 .button-add-task {
   border: none;
   width: 28px;
   height: 28px;
   padding: 0;
-  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 6px;
   background-color: transparent;
-  color: #9a9a9a;
+  color: var(--text-muted);
   cursor: pointer;
   transition:
-    background-color 0.15s ease,
-    color 0.15s ease,
-    transform 0.1s ease;
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .button-add-task:hover {
-  background-color: #1a1a1a;
-  color: #ffffff;
+  background-color: var(--hover-bg);
+  color: var(--text);
 }
 
 .button-add-task:active {
-  transform: scale(0.92);
+  transform: scale(0.95);
 }
 
 .button-add-task:focus-visible {
-  outline: 2px solid #1a1a1a;
   outline-offset: 2px;
 }
 
-/* ===== Подвал колонки ===== */
-.column-footer {
-  flex-shrink: 0;
-}
-
-.column-add-card {
-  width: 100%;
-  padding: 9px 12px;
-  border: 1px dashed #dedede;
-  border-radius: 10px;
-  background: transparent;
-  color: #9a9a9a;
-  font-size: 13px;
-  font-family: inherit;
-  text-align: left;
-  cursor: pointer;
-  transition:
-    border-color 0.15s ease,
-    color 0.15s ease,
-    background-color 0.15s ease;
-}
-
-.column-add-card:hover {
-  border-color: #1a1a1a;
-  color: #1a1a1a;
-  background-color: #fafafa;
-}
-
-/* ===== Оверлей ===== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(9, 30, 66, 0.54); /* добавлен фон */
+  background-color: var(--overlay-bg);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -355,7 +312,6 @@
   padding: 20px;
   z-index: 1000;
 
-  /* Скрыто по умолчанию */
   opacity: 0;
   visibility: hidden;
   transition:
@@ -369,14 +325,12 @@
 }
 
 .modal-create-task {
-  background-color: #ffffff;
+  background-color: var(--main-color);
   border-radius: 16px;
   width: 100%;
   max-width: 480px;
   padding: 24px;
-  box-shadow:
-    0 8px 24px rgba(9, 30, 66, 0.15),
-    0 0 1px rgba(9, 30, 66, 0.3);
+  box-shadow: var(--shadow-soft);
 
   transform: scale(0.95) translateY(20px);
   transition: transform 0.25s ease;
@@ -397,6 +351,7 @@
   margin: 0;
   font-size: 20px;
   font-weight: 600;
+  color: var(--text);
 }
 
 .modal-close {
@@ -405,17 +360,18 @@
   padding: 6px;
   border-radius: 6px;
   cursor: pointer;
-  color: #5e6c84;
+  color: var(--text-muted);
   display: flex;
   align-items: center;
   justify-content: center;
   transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .modal-close:hover {
-  background-color: rgba(9, 30, 66, 0.08);
+  background-color: var(--hover-bg);
+  color: var(--text);
 }
 
 .modal-close:focus-visible {
@@ -437,41 +393,49 @@
 .form-group label {
   font-size: 12px;
   font-weight: 600;
-  color: #5e6c84;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
 
 .form-group input,
+.form-group select,
 .form-group textarea {
   width: 100%;
   padding: 10px 12px;
-  border: 2px solid #dfe1e6;
+  border: 2px solid var(--input-border);
   border-radius: 8px;
   font-size: 14px;
   font-family: inherit;
-  color: #172b4d;
-  background-color: #fafbfc;
+  background-color: var(--input-bg);
+  color: var(--text);
   transition:
-    border-color 0.15s ease,
-    background-color 0.15s ease;
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
   box-sizing: border-box;
 }
 
+.form-control {
+  width: 50%;
+}
+
 .form-group input:hover,
-.form-group textarea:hover {
-  border-color: #b3bac5;
+.form-group textarea:hover,
+.form-group select:hover {
+  border-color: var(--input-border-hover);
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
   outline: none;
-  background-color: #ffffff;
+  background-color: var(--main-color);
+  border-color: var(--button-bg);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: #a5adba;
+  color: var(--text-light);
 }
 
 .form-group textarea {
@@ -496,21 +460,24 @@
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all var(--transition-fast);
 }
 
 .btn-cancel {
   background-color: transparent;
-  color: #5e6c84;
+  color: var(--text-muted);
 }
+
+.btn-cancel:hover {
+  background-color: var(--hover-bg);
+  color: var(--text);
+}
+
 .btn-submit {
-  color: #ffffff;
+  color: var(--main-color);
   background-color: var(--button-bg);
 }
 
-/* ===== Кастомный select с аватарками пользователей ===== */
-
-/* Скрытый нативный select (хранит значение формы) */
 .native-select {
   position: absolute;
   width: 1px;
@@ -575,7 +542,6 @@
   transform: rotate(180deg);
 }
 
-/* Круглый блок с иконкой человека слева */
 .user-select-avatar {
   display: flex;
   align-items: center;
@@ -598,7 +564,6 @@
   color: #5e6c84;
 }
 
-/* Никнейм справа от иконки */
 .user-select-name {
   font-size: 14px;
   color: #172b4d;
@@ -660,4 +625,41 @@
 
 .user-select-option.selected .user-select-name {
   font-weight: 600;
+}
+
+.card-task{
+  display: flex;
+  background-color:var(--main-color);
+  padding:10px 15px;
+  height: 100px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  flex-direction: column;
+  gap: 2px;
+}
+.task-card-header{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+.task-card-header > span {
+  opacity: 0;
+  transition: opacity 0.2s ease; 
+}
+.card-task:hover .task-card-header > span {
+  opacity: 1;
+cursor: pointer;
+
+}
+.card-name-block{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.task-name{
+  color:var(--text-light);
+}
+.task-description{
+  font-size: 14px;
 }
