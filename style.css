@@ -1,6 +1,6 @@
 :root {
   --main-color: #ffffff;
-  --border-color: #dedede;
+  --border-color: #ecebeb;
   --sidebar-collapsed: 64px;
   --sidebar-expanded: 240px;
   --transition-fast: 0.2s ease;
@@ -8,7 +8,7 @@
   --text: #4f4f4f;
   --padding: 20px 10px;
   --text-size: 15px;
-  --column-bg: #F5F5F5;
+  --column-bg: #fafafa;
   --text-muted: #8d8d8d;
   --text-light: #a5a5a5;
   --input-bg: #fafafa;
@@ -19,6 +19,7 @@
     0 8px 24px rgba(26, 26, 26, 0.12), 0 0 1px rgba(26, 26, 26, 0.2);
   --hover-bg: rgba(26, 26, 26, 0.06);
   --hover-bg-strong: #cbc5c5;
+  --task-card-bg:#f3f3f3a9;
 }
 
 * {
@@ -131,7 +132,7 @@
 .desktop-content {
   background-color: var(--main-color);
   width: 100%;
-  height: 100dvh; 
+  height: 100dvh;
   padding: var(--padding);
   display: flex;
   flex-direction: column;
@@ -215,9 +216,9 @@
   width: 17dvw;
   min-width: 250px;
   min-height: 80dvh;
-  padding: 15px;
+  padding: 10px;
   background-color: var(--column-bg);
-  border-radius: 15px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -228,12 +229,16 @@
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
+ 
 }
-
+.column-count {
+  font-size: 14px;
+}
 .column-title-block {
   display: flex;
   gap: 8px;
   align-items: center;
+
 }
 
 .column-color-dot {
@@ -627,17 +632,17 @@
   font-weight: 600;
 }
 
-.card-task{
+.card-task {
   display: flex;
-  background-color:var(--main-color);
-  padding:10px 15px;
+  background-color: var(--task-card-bg);
+  padding: 10px 15px;
   height: 100px;
   border-radius: 10px;
-  border: 1px solid var(--border-color);
   flex-direction: column;
   gap: 2px;
+  border: 0.5px solid var(--border-color);
 }
-.task-card-header{
+.task-card-header {
   display: flex;
   gap: 5px;
   align-items: center;
@@ -645,21 +650,20 @@
 }
 .task-card-header > span {
   opacity: 0;
-  transition: opacity 0.2s ease; 
+  transition: opacity 0.2s ease;
 }
 .card-task:hover .task-card-header > span {
   opacity: 1;
-cursor: pointer;
-
+  cursor: pointer;
 }
-.card-name-block{
+.card-name-block {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.task-name{
-  color:var(--text-light);
+.task-name {
+  color: var(--text-light);
 }
-.task-description{
+.task-description {
   font-size: 14px;
 }
