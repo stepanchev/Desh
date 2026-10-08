@@ -12,7 +12,11 @@
         <aside class="sidebar-side" id="sidebar">
           <div class="sidebar-header">
             <div class="logo-block">
-              <img src="assets/image/dashLogo.png" style="width: 100%; height: 60%;" alt="logo" />
+              <img
+                src="assets/image/dashLogo.png"
+                style="width: 100%; height: 60%"
+                alt="logo"
+              />
             </div>
           </div>
           <div class="sidebar-side-item-block">
@@ -151,50 +155,26 @@
             <div class="participants">
               <div class="user-profil-icon participants"></div>
             </div>
-            <button class="add-task" id="button-add-tusk">
-              <span>+</span> Создать таблицу
+            <button class="add-task" id="add-column">
+              <span
+                ><svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line></svg
+              ></span>
+              Создать таблицу
             </button>
           </div>
           <div class="desktop-main-content">
-           
-            <div class="columns-zone">
-              <article class="column">
-                <header class="column-header">
-                  <div class="column-title-block">
-                    <span class="column-color-dot"></span>
-                    <h4 class="column-title">Название</h4>
-                    <span class="column-count">0</span>
-                  </div>
-                  <button
-                    id="addTaskButton"
-                    class="button-add-task"
-                    aria-label="Добавить задачу"
-                  >
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                    >
-                      <line x1="12" y1="5" x2="12" y2="19"></line>
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
-                  </button>
-                </header>
-
-                <div class="task-list" id="taskList">
-                  <!-- задачи -->
-                </div>
-
-                <footer class="column-footer">
-                  <button type="button" class="column-add-card">
-                    + Добавить карточку
-                  </button>
-                </footer>
-              </article>
+            <div class="columns-zone" id="innerColumnsZone">
+              
             </div>
           </div>
         </section>
@@ -336,8 +316,12 @@
           </div>
 
           <div class="form-actions">
-            <button type="button" id="cancelButtonModal" class="btn-cancel">Отмена</button>
-            <button type="button" id="submitButton" class="btn-submit">Создать задачу</button>
+            <button type="button" id="cancelButtonModal" class="btn-cancel">
+              Отмена
+            </button>
+            <button type="button" id="submitButton" class="btn-submit">
+              Создать задачу
+            </button>
           </div>
         </form>
       </div>
