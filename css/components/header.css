@@ -1,0 +1,37 @@
+.desktop-header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 2%;
+}
+
+.user-profil-icon.participants {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: rgba(177, 177, 177, 0.493);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--main-color);
+  flex-shrink: 0;
+}
+
+.add-task {
+  padding: 6px 15px;
+  background-color: var(--button-bg);
+  color: var(--main-color);
+  border: none;
+  border-radius: 8px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: var(--text-size);
+  gap: 5px;
+  cursor: pointer;
+}
+
+.add-task > span {
+  font-size: 23px;
+  font-weight: 200;
+}

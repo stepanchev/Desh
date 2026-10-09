@@ -1,0 +1,23 @@
+.message-body {
+  height: 20px;
+  width: 90px;
+  background-color: #172b4d;
+}
+
+.notification {
+  background-color: #ff0000e3;
+  width: 15%;
+  padding: 8px 13px;
+  position: absolute;
+  top: 5px;
+  right: 0;
+  color: var(--main-color);
+  border-radius: 5px 0px 0px 5px;
+  opacity: 1;
+  transition: opacity 1s ease;
+  user-select: none;
+}
+
+.notification.removed {
+  opacity: 0;
+}

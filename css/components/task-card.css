@@ -1,0 +1,41 @@
+.card-task {
+  display: flex;
+  background-color: var(--task-card-bg);
+  padding: 10px 15px;
+  height: 100px;
+  border-radius: 10px;
+  flex-direction: column;
+  gap: 2px;
+  border: 0.5px solid var(--border-color);
+}
+
+.task-card-header {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-card-header > span {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card-task:hover .task-card-header > span {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.card-name-block {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.task-name {
+  color: var(--text-light);
+}
+
+.task-description {
+  font-size: 14px;
+}
