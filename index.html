@@ -183,7 +183,7 @@
     <div class="modal-overlay" id="modalOverlay">
       <div class="modal-create-task">
         <div class="modal-header">
-          <h3 class="modal-title">Новая задача</h3>
+          <h3 class="modal-title">Создание новой задачи</h3>
           <button
             id="closeModalAddTask"
             class="modal-close"
@@ -207,112 +207,17 @@
 
         <form action="" class="create-task-form">
           <div class="form-group">
-            <label for="task-title">Название</label>
+            <label for="task-title">Добавьте заголовок</label>
             <input type="text" name="task-title" id="task-title" />
           </div>
 
           <div class="form-group">
-            <label for="task-description">Описание</label>
+            <label for="task-description">Добавьте описание</label>
             <textarea
               name="task-description"
               id="task-description"
               rows="3"
             ></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="task-deadline">Выполнить до</label>
-            <input type="date" name="task-deadline" id="task-deadline" />
-          </div>
-
-          <div class="form-group">
-            <label for="task-assignee">Исполнитель</label>
-            <select
-              name="task-assignee"
-              id="task-assignee"
-              class="form-control native-select"
-            >
-              <option value="" data-avatar="">Не выбран</option>
-              <option value="ls" data-avatar="Л">ls</option>
-              <option value="anna" data-avatar="А">anna</option>
-              <option value="ivan" data-avatar="И">ivan</option>
-              <option value="maxim" data-avatar="М">maxim</option>
-            </select>
-
-            <div class="user-select" id="userSelect">
-              <button
-                type="button"
-                class="user-select-toggle"
-                id="userSelectToggle"
-                aria-haspopup="listbox"
-                aria-expanded="false"
-              >
-                <span class="user-select-value">
-                  <span class="user-select-avatar">?</span>
-                  <span class="user-select-name">Не выбран</span>
-                </span>
-                <svg
-                  class="user-select-arrow"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-
-              <ul
-                class="user-select-dropdown"
-                id="userSelectDropdown"
-                role="listbox"
-              >
-                <li class="user-select-option" role="option" data-value="">
-                  <span class="user-select-avatar empty">?</span>
-                  <span class="user-select-name">Не выбран</span>
-                </li>
-                <li
-                  class="user-select-option"
-                  role="option"
-                  data-value="ls"
-                  data-avatar="Л"
-                >
-                  <span class="user-select-avatar">Л</span>
-                  <span class="user-select-name">ls</span>
-                </li>
-                <li
-                  class="user-select-option"
-                  role="option"
-                  data-value="anna"
-                  data-avatar="А"
-                >
-                  <span class="user-select-avatar">А</span>
-                  <span class="user-select-name">anna</span>
-                </li>
-                <li
-                  class="user-select-option"
-                  role="option"
-                  data-value="ivan"
-                  data-avatar="И"
-                >
-                  <span class="user-select-avatar">И</span>
-                  <span class="user-select-name">ivan</span>
-                </li>
-                <li
-                  class="user-select-option"
-                  role="option"
-                  data-value="maxim"
-                  data-avatar="М"
-                >
-                  <span class="user-select-avatar">М</span>
-                  <span class="user-select-name">maxim</span>
-                </li>
-              </ul>
-            </div>
           </div>
 
           <div class="form-actions">
