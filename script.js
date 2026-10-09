@@ -72,69 +72,7 @@ document.addEventListener("keydown", (e) => {
 // ==========================================
 //   ВЫБОР ПОЛЬЗОВАТЕЛЯ
 // ==========================================
-function openUserSelect() {
-  userSelect.classList.add("open");
-  userSelectToggle.setAttribute("aria-expanded", "true");
-}
 
-function closeUserSelect() {
-  userSelect.classList.remove("open");
-  userSelectToggle.setAttribute("aria-expanded", "false");
-}
-
-function updateUserSelectValue(value) {
-  const option = nativeAssigneeSelect.querySelector(
-    `option[value="${CSS.escape(value)}"]`,
-  );
-  const toggleAvatar = userSelectToggle.querySelector(".user-select-avatar");
-  const toggleName = userSelectToggle.querySelector(".user-select-name");
-
-  if (option && option.value !== "") {
-    toggleAvatar.classList.remove("empty");
-    toggleAvatar.innerHTML = PERSON_SVG;
-    toggleName.textContent = option.textContent.trim();
-  } else {
-    toggleAvatar.classList.add("empty");
-    toggleAvatar.innerHTML = PERSON_SVG;
-    toggleName.textContent = "Не выбран";
-  }
-
-  userSelect.querySelectorAll(".user-select-option").forEach((li) => {
-    li.classList.toggle("selected", li.dataset.value === value);
-  });
-}
-
-if (nativeAssigneeSelect && userSelect) {
-  // Инициализация опций
-  userSelect.querySelectorAll(".user-select-option").forEach((li) => {
-    const opt = document.createElement("option");
-    opt.value = li.dataset.value;
-    opt.textContent = li.querySelector(".user-select-name").textContent.trim();
-    nativeAssigneeSelect.appendChild(opt);
-  });
-
-  userSelectToggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    userSelect.classList.contains("open")
-      ? closeUserSelect()
-      : openUserSelect();
-  });
-
-  userSelect.addEventListener("click", (e) => {
-    const option = e.target.closest(".user-select-option");
-    if (!option) return;
-    nativeAssigneeSelect.value = option.dataset.value;
-    nativeAssigneeSelect.dispatchEvent(new Event("change"));
-    updateUserSelectValue(option.dataset.value);
-    closeUserSelect();
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!userSelect.contains(e.target)) closeUserSelect();
-  });
-
-  updateUserSelectValue(nativeAssigneeSelect.value);
-}
 
 // ==========================================
 // ВАЛИДАЦИЯ И СОЗДАНИЕ ЗАДАЧИ
@@ -161,8 +99,7 @@ submitButton.addEventListener("click", () => {
   const taskName = taskTitleModal.value.trim();
   const taskDescription = taskDescriptionModal.value.trim();
   const taskDeveloperName = userSelectToggle
-    .querySelector(".user-select-name")
-    .textContent.trim();
+
 
   // Рендер задач
   renderNewTask(
@@ -175,9 +112,6 @@ submitButton.addEventListener("click", () => {
   // Очистка формы
   taskTitleModal.value = "";
   taskDescriptionModal.value = "";
-  taskkDeadlineModal.value = "";
-  nativeAssigneeSelect.value = "";
-  updateUserSelectValue("");
 
   closeModalAddTask();
 });
@@ -208,7 +142,6 @@ function renderNewTask(name, description, developerName, columnId) {
     </div>
     <div class="task-card-body">
       <p class="task-description">${description}</p>
-      <span class="task-assignee">${developerName}</span>
     </div>
   `;
   newTaskCard.addEventListener("mouseenter", () => {
@@ -219,7 +152,6 @@ function renderNewTask(name, description, developerName, columnId) {
   });
 
   taskContainer.appendChild(newTaskCard);
-  updateColumnCount(columnId);
 }
 
 // ==========================================
