@@ -225,6 +225,30 @@ function renderNewTask(name, description, developerName, columnId) {
 // ==========================================
 //  ДОБАВЛЕНИЕ КОЛОНОК
 // ==========================================
+function showError(errorText){
+  let ErrorConteiner = document.createElement('div')
+   if (!ErrorConteiner) {
+    ErrorConteiner = document.createElement('div');
+    ErrorConteiner.id = 'notificationContainer';
+    ErrorConteiner.className = 'notification-container';
+    document.body.appendChild(ErrorConteiner);
+  }
+  ErrorConteiner.id = "notificationContainer"
+  const notification = document.createElement('div')
+  notification.className = "notification"
+
+  notification.innerHTML = `
+  <span class="notification-message"> ${errorText} </span>
+  `
+  ErrorConteiner.appendChild(notification)
+  document.body.appendChild(ErrorConteiner)
+  setTimeout(() => {
+    notification.classList.add("removed");
+  }, 5000)
+  setTimeout(() => {
+     notification.remove();
+  },6000)
+}
 function AddingColumns() {
   const innerColumnsZone = document.getElementById("innerColumnsZone");
   if (!innerColumnsZone) return;
@@ -232,11 +256,7 @@ let currentColumnsCount = innerColumnsZone.querySelectorAll(".column").length;
 
   const newColumnId = `col-${columnCounter}`;
   if (currentColumnsCount >= 5) {
-    const errorMessage = `
-    <div class="message-body">
-    
-
-    `
+   showError("Достигнут допустимый лимит колонок")
     return;
   } 
     const newColumn = `
