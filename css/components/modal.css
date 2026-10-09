@@ -25,8 +25,8 @@
   max-width: 480px;
   padding: 24px;
   box-shadow: var(--shadow-soft);
-  transform: scale(0.6) translateY(10px);
-  transition: transform 1s ease;
+  transform: scale(0.9) translateY(10px);
+  transition: transform 0.2s ease;
 }
 
 .modal-overlay.active .modal-create-task {

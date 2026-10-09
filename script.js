@@ -69,12 +69,6 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// ==========================================
-//   ВЫБОР ПОЛЬЗОВАТЕЛЯ
-// ==========================================
-
-
-// ==========================================
 // ВАЛИДАЦИЯ И СОЗДАНИЕ ЗАДАЧИ
 // ==========================================
 taskTitleModal.addEventListener("input", () => {
@@ -98,16 +92,9 @@ submitButton.addEventListener("click", () => {
   // данные
   const taskName = taskTitleModal.value.trim();
   const taskDescription = taskDescriptionModal.value.trim();
-  const taskDeveloperName = userSelectToggle
-
 
   // Рендер задач
-  renderNewTask(
-    taskName,
-    taskDescription,
-    taskDeveloperName,
-    currentTargetColumnId,
-  );
+  renderNewTask(taskName, taskDescription, currentTargetColumnId);
 
   // Очистка формы
   taskTitleModal.value = "";
@@ -116,7 +103,7 @@ submitButton.addEventListener("click", () => {
   closeModalAddTask();
 });
 
-function renderNewTask(name, description, developerName, columnId) {
+function renderNewTask(name, description, columnId) {
   const taskContainer = document.querySelector(
     `.task-list[data-task-list="${columnId}"]`,
   );
@@ -157,45 +144,48 @@ function renderNewTask(name, description, developerName, columnId) {
 // ==========================================
 //  ДОБАВЛЕНИЕ КОЛОНОК
 // ==========================================
-function showError(errorText){
-  let ErrorConteiner = document.createElement('div')
-   if (!ErrorConteiner) {
-    ErrorConteiner = document.createElement('div');
-    ErrorConteiner.id = 'notificationContainer';
-    ErrorConteiner.className = 'notification-container';
+function showError(errorText) {
+  let ErrorConteiner = document.createElement("div");
+  if (!ErrorConteiner) {
+    ErrorConteiner = document.createElement("div");
+    ErrorConteiner.id = "notificationContainer";
+    ErrorConteiner.className = "notification-container";
     document.body.appendChild(ErrorConteiner);
   }
-  ErrorConteiner.id = "notificationContainer"
-  const notification = document.createElement('div')
-  notification.className = "notification"
+  ErrorConteiner.id = "notificationContainer";
+  const notification = document.createElement("div");
+  notification.className = "notification";
 
   notification.innerHTML = `
   <span class="notification-message"> ${errorText} </span>
-  `
-  ErrorConteiner.appendChild(notification)
-  document.body.appendChild(ErrorConteiner)
+  `;
+  ErrorConteiner.appendChild(notification);
+  document.body.appendChild(ErrorConteiner);
   setTimeout(() => {
     notification.classList.add("removed");
-  }, 5000)
+  }, 5000);
   setTimeout(() => {
-     notification.remove();
-  },6000)
+    notification.remove();
+  }, 6000);
 }
 function AddingColumns() {
+    columnCounter++;
   const innerColumnsZone = document.getElementById("innerColumnsZone");
-  if (!innerColumnsZone) return;
-let currentColumnsCount = innerColumnsZone.querySelectorAll(".column").length;
-
+  if (!innerColumnsZone) 
+  return;
+  let currentColumnsCount = innerColumnsZone.querySelectorAll(".column").length;
   const newColumnId = `col-${columnCounter}`;
+let userColumnTitle = prompt()
+    let columnTitle = userColumnTitle || null;
   if (currentColumnsCount >= 5) {
-   showError("Достигнут допустимый лимит колонок")
+    showError("Достигнут допустимый лимит колонок");
     return;
-  } 
-    const newColumn = `
+  }
+  const newColumn = `
     <article class="column" data-column-id="${newColumnId}">
       <header class="column-header">
         <div class="column-title-block">
-          <h4 class="column-title">Новая колонка</h4>
+          <h4 class="column-title">${columnTitle ?? "новая колонка"}</h4>
         </div>
         <button class="button-add-task" aria-label="Добавить задачу">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -211,6 +201,5 @@ let currentColumnsCount = innerColumnsZone.querySelectorAll(".column").length;
       </footer>
     </article>
   `;
-    innerColumnsZone.insertAdjacentHTML("beforeend", newColumn);
-  
+  innerColumnsZone.insertAdjacentHTML("beforeend", newColumn);
 }
