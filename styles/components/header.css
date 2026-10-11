@@ -27,12 +27,18 @@
   width: 170px;
    font-family: inherit;
 }
-
-.introduction-inner > h1 {
-  font-size: 28px;
-  font-weight: bold;
+.board-introduction{
+  height: 80px;
+  padding: 10px 0px 26px 0px ;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.introduction-inner > p {
+.board-introduction > h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+.board-introduction > p {
   font-size: 13px;
   color: #737373;
 }
