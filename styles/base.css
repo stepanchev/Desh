@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Fredoka-Variable";
+  src: url("../fonts/Fredoka-Variable.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+}
+
 :root {
   --main-color: #ffffff;
   --border-color: #ecebeb;
@@ -26,5 +33,5 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Fredoka-Variable", Arial, sans-serif;
 }
