@@ -38,6 +38,66 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+/* ===== Кнопка «Добавить колонку» -> инпут ===== */
+const addColumnButton = document.getElementById("addColumnButton");
+const addColumnInput = document.getElementById("addColumnInput");
+
+function showAddColumnInput() {
+  addColumnButton.hidden = true;
+  addColumnInput.hidden = false;
+  addColumnInput.focus();
+}
+
+function hideAddColumnInput() {
+  addColumnInput.value = "";
+  addColumnInput.hidden = true;
+  addColumnButton.hidden = false;
+}
+
+function createColumn(title) {
+  const column = document.createElement("article");
+  column.className = "column";
+  column.innerHTML = `
+    <header class="column-header">
+      <div class="column-title-block">
+        <span class="column-color-dot"></span>
+        <h4 class="column-title"></h4>
+        <span class="column-count">0</span>
+      </div>
+    </header>
+    <div class="task-list"></div>
+    <footer class="column-footer">
+      <button type="button" class="column-add-card">+ Добавить карточку</button>
+    </footer>`;
+  column.querySelector(".column-title").textContent = title;
+  document.querySelector(".columns-zone").insertBefore(column, addColumnButton);
+}
+
+if (addColumnButton && addColumnInput) {
+  // клик по кнопке — превращаем её в инпут
+  addColumnButton.addEventListener("click", showAddColumnInput);
+
+  // Enter — создать колонку, Escape — отменить
+  addColumnInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const title = addColumnInput.value.trim();
+      if (title) createColumn(title);
+      hideAddColumnInput();
+    } else if (e.key === "Escape") {
+      hideAddColumnInput();
+    }
+  });
+
+  // потеря фокуса (клик вне) — тоже возвращаем кнопку
+  addColumnInput.addEventListener("blur", () => {
+    if (addColumnInput.value.trim()) {
+      createColumn(addColumnInput.value.trim());
+    }
+    hideAddColumnInput();
+  });
+}
+
 /* ===== Кастомный select выбора исполнителя ===== */
 const userSelect = document.getElementById("userSelect");
 const userSelectToggle = document.getElementById("userSelectToggle");
