@@ -1,17 +1,18 @@
 .sidebar-side {
   height: 100dvh;
-  width: 250px;
+  width: 220px;
   background-color: transparent;
   display: flex;
   flex-direction: column;
   padding: var(--padding);
   gap: 5px;
+  border-right: 2px solid #E7E7E7;
 }
 
 .sidebar-side-item-block {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .sidebar-header {

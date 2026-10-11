@@ -10,10 +10,9 @@
   background-color: var(--main-color);
   width: 100%;
   height: 100dvh;
-  padding: var(--padding);
+  padding: var(--desktop-padding);
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
 .columns-zone {

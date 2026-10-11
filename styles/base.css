@@ -27,6 +27,7 @@
   --hover-bg: rgba(26, 26, 26, 0.06);
   --hover-bg-strong: #cbc5c5;
   --task-card-bg: #f3f3f3a9;
+  --desktop-padding:0px 32px;
 }
 
 * {
