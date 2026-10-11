@@ -53,7 +53,6 @@ document.addEventListener("click", (e) => {
     closeModalAddTask();
   }
 
-  //  Добавление новой колонки
   const addColumnBtn = e.target.closest("#add-column");
   if (addColumnBtn) {
     AddingColumns();
@@ -61,7 +60,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Закрытие по Escape
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     closeModalAddTask();
@@ -89,14 +87,11 @@ submitButton.addEventListener("click", () => {
     return;
   }
 
-  // данные
   const taskName = taskTitleModal.value.trim();
   const taskDescription = taskDescriptionModal.value.trim();
 
-  // Рендер задач
   renderNewTask(taskName, taskDescription, currentTargetColumnId);
 
-  // Очистка формы
   taskTitleModal.value = "";
   taskDescriptionModal.value = "";
 
@@ -169,14 +164,19 @@ function showError(errorText) {
   }, 6000);
 }
 function AddingColumns() {
-    columnCounter++;
+  columnCounter++;
   const innerColumnsZone = document.getElementById("innerColumnsZone");
-  if (!innerColumnsZone) 
-  return;
+  if (!innerColumnsZone) return;
   let currentColumnsCount = innerColumnsZone.querySelectorAll(".column").length;
   const newColumnId = `col-${columnCounter}`;
-let userColumnTitle = prompt()
-    let columnTitle = userColumnTitle || null;
+
+//=========================================
+//Запрос на имя колонки у пользователя
+//=========================================
+
+  let userColumnTitle = prompt();
+  let columnTitle = userColumnTitle || null;
+  
   if (currentColumnsCount >= 5) {
     showError("Достигнут допустимый лимит колонок");
     return;
