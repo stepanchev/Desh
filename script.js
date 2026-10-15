@@ -77,7 +77,6 @@ taskDescriptionModal.addEventListener("input", () => {
 });
 
 submitButton.addEventListener("click", () => {
-  // Валидация
   if (taskTitleModal.value.trim() === "") {
     taskTitleModal.style.border = "2px solid red";
     return;
@@ -89,31 +88,21 @@ submitButton.addEventListener("click", () => {
 
   const taskName = taskTitleModal.value.trim();
   const taskDescription = taskDescriptionModal.value.trim();
+  function renderNewTask(name, description, columnId) {
+    const taskContainer = document.querySelector(
+      `.task-list[data-task-list="${columnId}"]`,
+    );
 
-  renderNewTask(taskName, taskDescription, currentTargetColumnId);
+    if (!taskContainer) {
+      console.error("Контейнер для задач не найден. columnId:", columnId);
+      return;
+    }
 
-  taskTitleModal.value = "";
-  taskDescriptionModal.value = "";
-
-  closeModalAddTask();
-});
-
-function renderNewTask(name, description, columnId) {
-  const taskContainer = document.querySelector(
-    `.task-list[data-task-list="${columnId}"]`,
-  );
-
-  if (!taskContainer) {
-    console.error("Контейнер для задач не найден. columnId:", columnId);
-    return;
-  }
-
-  const newTaskCard = document.createElement("div");
-  newTaskCard.className = "card-task";
-  newTaskCard.innerHTML = `
+    const newTaskCard = document.createElement("div");
+    newTaskCard.className = "card-task";
+    newTaskCard.innerHTML = `
     <div class="task-card-header">
       <div class="card-name-block">
-        <div class="column-color-dot"></div>
         <h5 class="task-name">${name}</h5>
       </div>
       <span class="edit-task-icon" style="cursor: pointer; opacity: 0; transition: opacity 0.2s;">
@@ -126,15 +115,22 @@ function renderNewTask(name, description, columnId) {
       <p class="task-description">${description}</p>
     </div>
   `;
-  newTaskCard.addEventListener("mouseenter", () => {
-    newTaskCard.querySelector(".edit-task-icon").style.opacity = "1";
-  });
-  newTaskCard.addEventListener("mouseleave", () => {
-    newTaskCard.querySelector(".edit-task-icon").style.opacity = "0";
-  });
+    newTaskCard.addEventListener("mouseenter", () => {
+      newTaskCard.querySelector(".edit-task-icon").style.opacity = "1";
+    });
+    newTaskCard.addEventListener("mouseleave", () => {
+      newTaskCard.querySelector(".edit-task-icon").style.opacity = "0";
+    });
 
-  taskContainer.appendChild(newTaskCard);
-}
+    taskContainer.appendChild(newTaskCard);
+  }
+  renderNewTask(taskName, taskDescription, currentTargetColumnId);
+
+  taskTitleModal.value = "";
+  taskDescriptionModal.value = "";
+
+  closeModalAddTask();
+});
 
 // ==========================================
 //  ДОБАВЛЕНИЕ КОЛОНОК
@@ -164,44 +160,121 @@ function showError(errorText) {
   }, 6000);
 }
 function AddingColumns() {
-  columnCounter++;
   const innerColumnsZone = document.getElementById("innerColumnsZone");
-  if (!innerColumnsZone) return;
-  let currentColumnsCount = innerColumnsZone.querySelectorAll(".column").length;
-  const newColumnId = `col-${columnCounter}`;
+  const addColumnBtn = document.getElementById("add-column");
 
-  //=========================================
-  //Запрос на имя колонки у пользователя
-  //=========================================
+  if (!innerColumnsZone || !addColumnBtn) return;
 
-  let userColumnTitle = prompt();
-  let columnTitle = userColumnTitle || null;
+  const currentColumnsCount =
+    innerColumnsZone.querySelectorAll(".column").length;
 
   if (currentColumnsCount >= 5) {
     showError("Достигнут допустимый лимит колонок");
     return;
   }
-  const newColumn = `
-    <article class="column" data-column-id="${newColumnId}">
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.placeholder = "Название колонки...";
+  input.className = addColumnBtn.className;
+  input.innerHTML = input.style.cssText = `
+    box-sizing: border-box;
+    padding: 0px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font: inherit;
+    width: 180px;
+    background-color: transparent;
+    outline: none;
+    box-shadow: 0 0 0 transparent;
+    color: #A0A0A0;
+dispaly: flex;
+
+    transition:
+      width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      padding 0.3s ease,
+      border-color 0.3s ease,
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+  `;
+
+  addColumnBtn.replaceWith(input);
+
+  requestAnimationFrame(() => {
+    input.style.width = "320px";
+    input.style.padding = "0px 10px";
+    input.style.borderColor = "#555555";
+    input.style.backgroundColor = "#FFFFFF";
+    input.style.boxShadow = "0 3px 12px rgb(0 0 0 / 8%)";
+  });
+
+  input.focus();
+
+  let finished = false;
+
+  function finishCreatingColumn(save = true) {
+    if (finished) return;
+    finished = true;
+
+    const columnTitle = input.value.trim() || "новая колонка";
+
+    input.replaceWith(addColumnBtn);
+
+    if (!save) return;
+
+    columnCounter++;
+    const newColumnId = `col-${columnCounter}`;
+
+    const newColumn = document.createElement("article");
+    newColumn.className = "column";
+    newColumn.dataset.columnId = newColumnId;
+
+    newColumn.innerHTML = `
       <header class="column-header">
         <div class="column-title-block">
-          <h4 class="column-title">${columnTitle ?? "новая колонка"}</h4>
+          <h4 class="column-title"></h4>
         </div>
         <button class="button-redact-task" aria-label="redact">
-         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8.00004 8.66719C8.36819 8.66719 8.66664 8.36848 8.66664 7.99999C8.66664 7.63151 8.36819 7.33279 8.00004 7.33279C7.63188 7.33279 7.33344 7.63151 7.33344 7.99999C7.33344 8.36848 7.63188 8.66719 8.00004 8.66719Z" stroke="#737373" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M12.6662 8.66719C13.0344 8.66719 13.3328 8.36848 13.3328 7.99999C13.3328 7.63151 13.0344 7.33279 12.6662 7.33279C12.2981 7.33279 11.9996 7.63151 11.9996 7.99999C11.9996 8.36848 12.2981 8.66719 12.6662 8.66719Z" stroke="#737373" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M3.33384 8.66719C3.70199 8.66719 4.00044 8.36848 4.00044 7.99999C4.00044 7.63151 3.70199 7.33279 3.33384 7.33279C2.96568 7.33279 2.66724 7.63151 2.66724 7.99999C2.66724 8.36848 2.96568 8.66719 3.33384 8.66719Z" stroke="#737373" stroke-width="1.6" stroke-linecap="round"/>
-</svg>
-
+          <svg width="16" height="16" viewBox="0 0 16 16"
+               fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 8.667C8.368 8.667 8.667 8.368 8.667 8
+              C8.667 7.632 8.368 7.333 8 7.333
+              C7.632 7.333 7.333 7.632 7.333 8
+              C7.333 8.368 7.632 8.667 8 8.667Z"
+              stroke="#737373" stroke-width="1.6"/>
+            <path d="M12.666 8.667C13.034 8.667 13.333 8.368 13.333 8
+              C13.333 7.632 13.034 7.333 12.666 7.333
+              C12.298 7.333 12 7.632 12 8
+              C12 8.368 12.298 8.667 12.666 8.667Z"
+              stroke="#737373" stroke-width="1.6"/>
+            <path d="M3.334 8.667C3.702 8.667 4 8.368 4 8
+              C4 7.632 3.702 7.333 3.334 7.333
+              C2.966 7.333 2.667 7.632 2.667 8
+              C2.667 8.368 2.966 8.667 3.334 8.667Z"
+              stroke="#737373" stroke-width="1.6"/>
+          </svg>
         </button>
       </header>
-      <div class="task-list" data-task-list="${newColumnId}">
-        <!-- задачи -->
-      </div>
-      <footer class="column-footer">
-      </footer>
-    </article>
-  `;
-  innerColumnsZone.insertAdjacentHTML("beforeend", newColumn);
+      <div class="task-list" data-task-list="${newColumnId}"></div>
+      <footer class="column-footer"></footer>
+    `;
+
+    newColumn.querySelector(".column-title").textContent = columnTitle;
+
+    innerColumnsZone.appendChild(newColumn);
+  }
+
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      finishCreatingColumn();
+    }
+
+    if (event.key === "Escape") {
+      finishCreatingColumn(false);
+    }
+  });
+
+  input.addEventListener("blur", () => {
+    finishCreatingColumn();
+  });
 }
