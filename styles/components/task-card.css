@@ -1,6 +1,6 @@
 .card-task {
   display: flex;
-  background-color: var(--task-card-bg);
+  background-color: var(--main-color);
   padding: 10px 15px;
   height: 100px;
   border-radius: 10px;

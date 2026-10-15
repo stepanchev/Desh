@@ -35,7 +35,7 @@ function closeModalAddTask() {
 // ==========================================
 
 document.addEventListener("click", (e) => {
-  const addTaskBtn = e.target.closest(".button-add-task, .column-add-card");
+  const addTaskBtn = e.target.closest(".button-redact-task, .column-add-card");
   if (addTaskBtn) {
     const column = addTaskBtn.closest(".column");
     if (column) {
@@ -170,13 +170,13 @@ function AddingColumns() {
   let currentColumnsCount = innerColumnsZone.querySelectorAll(".column").length;
   const newColumnId = `col-${columnCounter}`;
 
-//=========================================
-//Запрос на имя колонки у пользователя
-//=========================================
+  //=========================================
+  //Запрос на имя колонки у пользователя
+  //=========================================
 
   let userColumnTitle = prompt();
   let columnTitle = userColumnTitle || null;
-  
+
   if (currentColumnsCount >= 5) {
     showError("Достигнут допустимый лимит колонок");
     return;
@@ -187,11 +187,13 @@ function AddingColumns() {
         <div class="column-title-block">
           <h4 class="column-title">${columnTitle ?? "новая колонка"}</h4>
         </div>
-        <button class="button-add-task" aria-label="Добавить задачу">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
+        <button class="button-redact-task" aria-label="redact">
+         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.00004 8.66719C8.36819 8.66719 8.66664 8.36848 8.66664 7.99999C8.66664 7.63151 8.36819 7.33279 8.00004 7.33279C7.63188 7.33279 7.33344 7.63151 7.33344 7.99999C7.33344 8.36848 7.63188 8.66719 8.00004 8.66719Z" stroke="#737373" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M12.6662 8.66719C13.0344 8.66719 13.3328 8.36848 13.3328 7.99999C13.3328 7.63151 13.0344 7.33279 12.6662 7.33279C12.2981 7.33279 11.9996 7.63151 11.9996 7.99999C11.9996 8.36848 12.2981 8.66719 12.6662 8.66719Z" stroke="#737373" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M3.33384 8.66719C3.70199 8.66719 4.00044 8.36848 4.00044 7.99999C4.00044 7.63151 3.70199 7.33279 3.33384 7.33279C2.96568 7.33279 2.66724 7.63151 2.66724 7.99999C2.66724 8.36848 2.96568 8.66719 3.33384 8.66719Z" stroke="#737373" stroke-width="1.6" stroke-linecap="round"/>
+</svg>
+
         </button>
       </header>
       <div class="task-list" data-task-list="${newColumnId}">

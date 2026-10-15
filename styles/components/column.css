@@ -1,13 +1,12 @@
 .column {
-  width: 15.8dvw;
-  min-width: 250px;
+  width: 280px;
   min-height: 600px;
   padding: 10px;
   background-color: var(--column-bg);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 22px;
 }
 
 .column-header {
@@ -60,7 +59,7 @@
   border-radius: 3px;
 }
 
-.button-add-task {
+.button-redact-task {
   border: none;
   width: 28px;
   height: 28px;
@@ -79,15 +78,15 @@
     color var(--transition-fast);
 }
 
-.button-add-task:hover {
+.button-redact-task:hover {
   background-color: var(--hover-bg);
   color: var(--text);
 }
 
-.button-add-task:active {
+.button-redact-task:active {
   transform: scale(0.95);
 }
 
-.button-add-task:focus-visible {
+.button-redact-task:focus-visible {
   outline-offset: 2px;
 }
