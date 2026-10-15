@@ -1,24 +1,75 @@
 .card-task {
+  box-sizing: border-box;
   display: flex;
-  background-color: var(--main-color);
-  padding: 10px 15px;
-  height: 100px;
-  border-radius: 10px;
   flex-direction: column;
-  gap: 2px;
-  border: 0.5px solid var(--border-color);
+  gap: 8px;
+
+  min-height: 90px;
+  padding: 4px 8px;
+
+  background-color: var(--main-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  transition:
+    border-color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.card-task:hover {
+  border-color: #c8c8c8;
 }
 
 .task-card-header {
   display: flex;
-  gap: 5px;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.card-name-block {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.task-name {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+}
+
+.task-description {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
 }
 
 .task-card-header > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+
+  color: var(--text-muted);
   opacity: 0;
-  transition: opacity 0.2s ease;
+
+  transition:
+    opacity 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .card-task:hover .task-card-header > span {
@@ -26,16 +77,4 @@
   cursor: pointer;
 }
 
-.card-name-block {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
 
-.task-name {
-  color: var(--text-light);
-}
-
-.task-description {
-  font-size: 14px;
-}
