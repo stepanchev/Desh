@@ -141,6 +141,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  user-select: none
 }
 .empty-message {
   text-align: center;
