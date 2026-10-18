@@ -27,18 +27,23 @@
   width: 170px;
    font-family: inherit;
 }
-.board-introduction{
-  height: 80px;
-  padding: 10px 0px 26px 0px ;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+#add-column {
+  box-sizing: border-box;
+  transition:
+    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease,
+    border-radius 0.3s ease,
+    border-color 0.3s ease,
+    padding 0.3s ease,
+    box-shadow 0.3s ease;
 }
-.board-introduction > h1 {
-  font-size: 28px;
-  font-weight: 700;
-}
-.board-introduction > p {
-  font-size: 13px;
-  color: #737373;
+
+#add-column.is-editing {
+  width: 320px;
+  padding: 0 10px;
+  border: 1px solid #555555;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 8%);
+  outline: none;
 }
