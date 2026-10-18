@@ -216,7 +216,7 @@ dispaly: flex;
     if (finished) return;
     finished = true;
 
-    const columnTitle = input.value.trim() || "новая колонка";
+    const columnTitle = input.value.trim() || "Новая таблица";
 
     input.replaceWith(addColumnBtn);
 
@@ -256,7 +256,6 @@ dispaly: flex;
         </button>
       </header>
       <div class="task-list" data-task-list="${newColumnId}"></div>
-      <footer class="column-footer"></footer>
     `;
 
     newColumn.querySelector(".column-title").textContent = columnTitle;
