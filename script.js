@@ -255,7 +255,16 @@ dispaly: flex;
           </svg>
         </button>
       </header>
-      <div class="task-list" data-task-list="${newColumnId}"></div>
+      <div class="task-list" data-task-list="${newColumnId}">
+        <div class="empty-column"> 
+          <div>
+            <img src="assets/image/inbox.png"></div>
+              <div class="empty-message"> 
+                <p class="heading-message">Здесь пока нет задач</p>
+                <p class="main-message">Добавьте первую карточку, чтобы начать работу</p>
+              </div>
+          </div>
+      </div>
     `;
 
     newColumn.querySelector(".column-title").textContent = columnTitle;
