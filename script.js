@@ -31,7 +31,7 @@ function closeModalAddTask() {
 // Глобальные события
 // ==========================================
 document.addEventListener("click", (e) => {
-  const addTaskBtn = e.target.closest(".button-redact-task, .column-add-card");
+  const addTaskBtn = e.target.closest(".add-task-button");
   if (addTaskBtn) {
     const column = addTaskBtn.closest(".column");
     if (column) {
@@ -74,7 +74,7 @@ taskDescriptionModal.addEventListener("input", () => {
 
 function renderNewTask(name, description, columnId) {
   const taskContainer = document.querySelector(
-    `.task-list[data-task-list="${columnId}"]`
+    `.task-list[data-task-list="${columnId}"]`,
   );
 
   if (!taskContainer) {
@@ -104,7 +104,7 @@ function renderNewTask(name, description, columnId) {
       <p class="task-description">${description}</p>
     </div>
   `;
-  
+
   newTaskCard.addEventListener("mouseenter", () => {
     newTaskCard.querySelector(".edit-task-icon").style.opacity = "1";
   });
@@ -147,13 +147,13 @@ function showError(errorText) {
     container.className = "notification-container";
     document.body.appendChild(container);
   }
-  
+
   const notification = document.createElement("div");
   notification.className = "notification";
   notification.innerHTML = `<span class="notification-message"> ${errorText} </span>`;
-  
+
   container.appendChild(notification);
-  
+
   setTimeout(() => {
     notification.classList.add("removed");
   }, 5000);
@@ -168,7 +168,8 @@ function AddingColumns() {
 
   if (!innerColumnsZone || !addColumnBtn) return;
 
-  const currentColumnsCount = innerColumnsZone.querySelectorAll(".column").length;
+  const currentColumnsCount =
+    innerColumnsZone.querySelectorAll(".column").length;
 
   if (currentColumnsCount >= 5) {
     showError("Достигнут допустимый лимит колонок");
@@ -234,6 +235,12 @@ function AddingColumns() {
         <div class="column-title-block">
           <h4 class="column-title">${columnTitle}</h4>
         </div>
+        <div class="header-buttons">
+        <button class="add-task-button">
+        <svg class="" width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.800049 5.46725H5.46725M5.46725 5.46725H10.1344M5.46725 5.46725V0.800049M5.46725 5.46725V10.1344" stroke-width="1.6" stroke-linecap="round" stroke="#737373"/>
+        </svg>
+        </button>
         <button class="button-redact-task" aria-label="redact">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8 8.667C8.368 8.667 8.667 8.368 8.667 8 C8.667 7.632 8.368 7.333 8 7.333 C7.632 7.333 7.333 7.632 7.333 8 C7.333 8.368 7.632 8.667 8 8.667Z" stroke="#737373" stroke-width="1.6"/>
@@ -241,6 +248,7 @@ function AddingColumns() {
             <path d="M3.334 8.667C3.702 8.667 4 8.368 4 8 C4 7.632 3.702 7.333 3.334 7.333 C2.966 7.333 2.667 7.632 2.667 8 C2.667 8.368 2.966 8.667 3.334 8.667Z" stroke="#737373" stroke-width="1.6"/>
           </svg>
         </button>
+        </div>
       </header>
       <div class="task-list" data-task-list="${newColumnId}">
         <div class="empty-column"> 
