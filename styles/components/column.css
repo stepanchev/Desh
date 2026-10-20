@@ -85,8 +85,10 @@
 .task-list::-webkit-scrollbar-thumb:hover {
   background-color: rgba(128, 128, 128, 0.45);
 }
-
-.button-redact-task {
+.header-buttons{
+  display: flex;
+}
+.button-redact-task,.add-task-button {
   flex-shrink: 0;
   border: 1px solid transparent;
   width: 30px;
@@ -114,8 +116,10 @@
     opacity 0.2s ease,
     transform 0.2s ease;
 }
-
-.column:hover .button-redact-task {
+.add-task-button:hover{
+  color: #df1b1b;
+}
+.column:hover  {
   opacity: 1;
 }
 
